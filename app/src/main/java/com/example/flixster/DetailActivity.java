@@ -1,7 +1,5 @@
 package com.example.flixster;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RatingBar;
@@ -30,6 +28,7 @@ public class DetailActivity extends YouTubeBaseActivity {
     TextView tvOverview;
     RatingBar ratingBar;
     YouTubePlayerView playerView;
+    TextView releaseDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class DetailActivity extends YouTubeBaseActivity {
         tvOverview = findViewById(R.id.tvOverview);
         ratingBar = findViewById(R.id.ratingBar);
         playerView = findViewById(R.id.player);
+        releaseDate = findViewById(R.id.tvRelease);
 
 
         String title = getIntent().getStringExtra("title");
@@ -47,6 +47,7 @@ public class DetailActivity extends YouTubeBaseActivity {
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
         ratingBar.setRating((float) movie.getRating());
+        releaseDate.setText(movie.getReleaseDate());
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(String.format(VIDEOS_URL, movie.getMovieId()), new JsonHttpResponseHandler() {
@@ -80,6 +81,7 @@ public class DetailActivity extends YouTubeBaseActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("DetailActivity", "onInitializationSuccess");
                 youTubePlayer.cueVideo(youtubeKey);
+
             }
 
             @Override

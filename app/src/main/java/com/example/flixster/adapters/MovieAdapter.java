@@ -9,14 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.flixster.DetailActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
@@ -24,6 +25,8 @@ import com.example.flixster.models.Movie;
 import org.parceler.Parcels;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
@@ -73,15 +76,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             String imageUrl;
-            int placeholder;
             if(context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
                 imageUrl = movie.getBackdropPath();
-                placeholder = R.drawable.backdrop_placeholder;
             } else {
                 imageUrl = movie.getPosterPath();
-                placeholder = R.drawable.placeholder;
             }
-            Glide.with(context).load(imageUrl).into(ivPoster);
+
+            Glide.with(context).load(imageUrl).placeholder(R.drawable.ic_placeholder).transform(new MultiTransformation<>(new CenterCrop(), new RoundedCorners(15))).into(ivPoster);
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
