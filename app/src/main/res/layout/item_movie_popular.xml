@@ -8,7 +8,7 @@
     android:background="@color/black">
 
     <ImageView
-        android:id="@+id/ivPoster"
+        android:id="@+id/ivPosterPop"
         android:layout_width="120dp"
         android:layout_height="200dp"
         android:layout_alignParentStart="true"
@@ -18,26 +18,35 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvTitlePop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/ivPoster"
+        android:layout_toEndOf="@+id/ivPosterPop"
         android:textColor="@color/white"
         android:textSize="24sp"
         tools:text="Spider-Man: No Way Home" />
 
     <TextView
-        android:id="@+id/tvOverview"
+        android:id="@+id/tvOverviewPop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
+        android:layout_below="@+id/tvTitlePop"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/ivPoster"
+        android:layout_toEndOf="@+id/ivPosterPop"
         android:textColor="@color/white"
         tools:text="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man." />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="80dp"
+        app:srcCompat="@android:drawable/ic_media_play" />
+
 
 </RelativeLayout>
